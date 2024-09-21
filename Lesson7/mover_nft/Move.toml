@@ -1,7 +1,7 @@
 [package]
 name = "mover_nft"
 version = "1.0.0"
-published-at = "0x0"
+published-at = "0x27321bc52766f3ed3f809524ca0149bdbbf01f7f18bdccc261eab2dc5fa14589"
 
 [dependencies.Sui]
 git = "https://github.com/MystenLabs/sui.git"
