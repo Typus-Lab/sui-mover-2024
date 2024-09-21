@@ -15,3 +15,5 @@ Kiosk = { git = "https://github.com/MystenLabs/apps.git", subdir = "kiosk", rev 
 [addresses]
 mover_nft = "0x0"
 ADMIN = "0xd15f079d5f60b8fdfdcf3ca66c0d3473790c758b04b6418929d5d2991c5443ee"
+
+# UpgradeCap = 0x266b836e150628e9fffdc17b8097ac4c2cb6849841f22faf5d4a48ce6cad4e72
