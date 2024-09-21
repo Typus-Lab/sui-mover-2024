@@ -35,7 +35,7 @@ module mover_nft::mover_nft {
         name: String,
         description: String,
         number: u64,
-        url: Url,
+        url: Url, // ibafybeiaotsmbrfvn3u3xiobrxlrzbhffnlqyui5sweohjbd3l2bhyvndpm
         attributes: VecMap<String, String>,
         level: u64,
         exp: u64,
@@ -58,7 +58,7 @@ module mover_nft::mover_nft {
         let display = display::new<Tails>(&publisher, ctx);
         display::add(&mut display, string::utf8(b"name"), string::utf8(b"{name}"));
         display::add(&mut display, string::utf8(b"description"), string::utf8(b"{description}"));
-        display::add(&mut display, string::utf8(b"image_url"), string::utf8(b"{url}"));
+        display::add(&mut display, string::utf8(b"image_url"), string::utf8(b"{url}")); // ipfs://ibafybeiaotsmbrfvn3u3xiobrxlrzbhffnlqyui5sweohjbd3l2bhyvndpm
         display::add(&mut display, string::utf8(b"attributes"), string::utf8(b"{attributes}"));
         display::add(&mut display, string::utf8(b"level"), string::utf8(b"{level}"));
         display::add(&mut display, string::utf8(b"exp"), string::utf8(b"{exp}"));
@@ -106,6 +106,8 @@ module mover_nft::mover_nft {
         tails: TableVec<Tails>,
         num: u64,
         is_live: bool,
+        // price: u64,
+        // start_time: u64,
     }
 
     entry fun new_pool(
@@ -442,6 +444,7 @@ module mover_nft::mover_nft {
             let i = random::generate_u64_in_range(&mut generator, 0, len-1);
             table_vec::swap(&mut pool.tails, i, len-1);
             table_vec::pop_back(&mut pool.tails)
+            // table_vec::swap_remove(&mut pool.tails, i)
         };
 
         let mint_event = MintEvent {
@@ -464,7 +467,7 @@ module mover_nft::mover_nft {
         whitelist_token: Whitelist,
         kiosk: &mut Kiosk,
         kiosk_cap: &KioskOwnerCap,
-        random: &Random,
+        random: &Random, // 0x8
         ctx: &mut TxContext,
     ) {
         let nft = mint(pool, whitelist_token, random, ctx);
