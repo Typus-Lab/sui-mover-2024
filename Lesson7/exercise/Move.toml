@@ -1,0 +1,19 @@
+[package]
+name = "exercise"
+version = "1.0.0"
+published-at = "0xde4b05571fc9788431781cb771db1d68d4c14d50edf1c6f3da9dd2e98c022278"
+
+[dependencies.Sui]
+git = "https://github.com/MystenLabs/sui.git"
+subdir = "crates/sui-framework/packages/sui-framework"
+rev = "mainnet"
+override = true
+
+[dependencies]
+Kiosk = { git = "https://github.com/MystenLabs/apps.git", subdir = "kiosk", rev = "main" }
+mover_nft = { local = "../mover_nft" }
+
+[addresses]
+exercise = "0x0"
+
+# UpgradeCap = 0xf86781ba8fa1506d4e703fb9ab6fc748735b9df140a747eb9568a1e74eda3719

@@ -16,3 +16,23 @@ display: 0x3ca76d3381e5942031f340f13c7850cb91232a7edf0d29e9eb9ffc71c932699e
 publisher: 0x423220a776633a10a301f2b9224c75a156ddd4e52f66b04a3a62a8b8e7de98d0
 managerCap: 0x8a357290ced4b6e35451dbed568d16a499437934c5e1947fd7f637d68b5cff18
 -->
+
+# new_manager_cap
+
+```
+sui client ptb \
+--assign manager_cap @0x8a357290ced4b6e35451dbed568d16a499437934c5e1947fd7f637d68b5cff18 \
+--move-call 0x27321bc52766f3ed3f809524ca0149bdbbf01f7f18bdccc261eab2dc5fa14589::mover_nft::new_manager_cap manager_cap \
+--gas-budget 100000000
+```
+
+```
+sui client ptb \
+--assign kiosk @0x90df9555659e8d1fe6a57e8c1f1c67a2a093b0ba3ae3de23da2a46d3d3b4b599 \
+--assign kiosk_cap @0x4854d1d173f8b13d7449e6081159a543d3dfaa3f466f7c80a0b1f73ac561de00 \
+--assign tails @0xc43ba72aba8c53be3285efb99a14e579167186d2e4b5e9a653d3ca6dcfc9df6e \
+--move-call 0x2::kiosk::borrow_mut"<0x27321bc52766f3ed3f809524ca0149bdbbf01f7f18bdccc261eab2dc5fa14589::mover_nft::Tails>" kiosk kiosk_cap tails --assign result \
+--assign manager_cap @0x8a357290ced4b6e35451dbed568d16a499437934c5e1947fd7f637d68b5cff18 \
+--move-call 0x27321bc52766f3ed3f809524ca0149bdbbf01f7f18bdccc261eab2dc5fa14589::mover_nft::nft_exp_up manager_cap result 1000 \
+--gas-budget 100000000
+```
