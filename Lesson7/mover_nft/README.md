@@ -26,6 +26,12 @@ sui client ptb \
 --gas-budget 100000000
 ```
 
+# issue whitelist
+
+```
+sui client call --gas-budget 100000000 --package 0x27321bc52766f3ed3f809524ca0149bdbbf01f7f18bdccc261eab2dc5fa14589 --module "mover_nft" --function "issue_whitelist" --args 0x8a357290ced4b6e35451dbed568d16a499437934c5e1947fd7f637d68b5cff18 0xbc583ae6c5a185ae1d74e7f979f0f57b3b579abc54b6d1141bf4f1889d98ec10 "[<address>]"
+```
+
 # mint
 
 ```
