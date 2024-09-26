@@ -1,0 +1,16 @@
+[package]
+name = "exercise"
+version = "1.0.0"
+edition = "2024.beta"
+# published-at = ""
+
+[dependencies.Sui]
+git = "https://github.com/MystenLabs/sui.git"
+subdir = "crates/sui-framework/packages/sui-framework"
+rev = "mainnet"
+
+[dependencies.lesson]
+local = "../lesson"
+
+[addresses]
+exercise = "0x0"
