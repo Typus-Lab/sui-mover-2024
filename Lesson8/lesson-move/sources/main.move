@@ -168,6 +168,61 @@ module lesson::main {
         transfer::transfer(lorem_ipsum, ctx.sender());
     }
 
+    public struct TestDynamicFieldGasFee has key, store {
+        id: UID,
+    }
+    entry fun test_dynamic_field_gas_fee(
+        mut count: u64,
+        ctx: &mut TxContext,
+    ) {
+        let mut t = TestDynamicFieldGasFee {
+            id: object::new(ctx),
+        };
+        while (count > 0) {
+            dynamic_field::add(&mut t.id, count, count);
+            count = count - 1;
+        };
+        transfer::share_object(t);
+    }
+    entry fun test_dynamic_field_gas_fee_2(
+        t: &mut TestDynamicFieldGasFee,
+        mut count: u64,
+    ) {
+        while (count > 0) {
+            let value = dynamic_field::borrow_mut<u64, u64>(&mut t.id, count);
+            *value = *value + 1;
+            count = count - 1;
+        };
+    }
+
+    public struct TestVectorGasFee has key, store {
+        id: UID,
+        data: vector<u64>,
+    }
+    entry fun test_vector_gas_fee(
+        mut count: u64,
+        ctx: &mut TxContext,
+    ) {
+        let mut t = TestVectorGasFee {
+            id: object::new(ctx),
+            data: vector[],
+        };
+        while (count > 0) {
+            t.data.push_back(count);
+            count = count - 1;
+        };
+        transfer::share_object(t);
+    }
+    entry fun test_vector_gas_fee_2(
+        t: &mut TestVectorGasFee,
+        mut count: u64,
+    ) {
+        while (count > 0) {
+            *&mut t.data[count - 1] = t.data[count - 1] + 1;
+            count = count - 1;
+        };
+    }
+
     public struct AccessCap<OTW> has store {
         otw: OTW,
     }
