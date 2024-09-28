@@ -5,8 +5,8 @@ import { BcsReader } from "@mysten/bcs";
 (async () => {
     let provider = new SuiClient({ url: "https://fullnode.testnet.sui.io:443" });
     let transaction = new Transaction();
-    let packageId = "0x4133cacd2cdd298b4474f2bb2af0c7da8e415d126473c1dc9b6277de3c0f7587";
-    let registry = "0x868568ea2164160010c2162421b4149cc60800a757c17829c8705a5e7f5110df";
+    let packageId = "0x0d0b8de6834045f24acae61d09c2e655aede6a6d926c361bdabcc7b34d057870";
+    let registry = "0xeb66e96624adbb278053709fe8821c4277947c157e4f487b4d69b1c8f8c859bf";
     transaction.moveCall({
         target: `${packageId}::main::get_chimera_bcs`,
         typeArguments: [],

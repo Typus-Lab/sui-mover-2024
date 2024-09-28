@@ -29,6 +29,9 @@ module lesson::main {
         transfer::share_object(Registry {
             id: object::new(ctx),
         });
+        transfer::share_object(Exercise {
+            id: object::new(ctx),
+        });
     }
 
     public struct DynamicFieldData has store {
@@ -228,6 +231,7 @@ module lesson::main {
     }
 
     public fun gain_access_capability<OTW: drop>(otw: OTW): AccessCap<OTW> {
+        // authority check?
         AccessCap<OTW> {
             otw,
         }

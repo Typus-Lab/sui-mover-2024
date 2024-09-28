@@ -17,7 +17,7 @@ module exercise::exercise {
     }
 
     entry fun mint_lorem_ipsum(
-        key_box: KeyBox,
+        key_box: &KeyBox,
         registry: &Registry,
         ctx: &mut TxContext,
     ) {
@@ -31,7 +31,7 @@ module exercise::exercise {
     }
 
     entry fun stake_lorem_ipsum(
-        key_box: KeyBox,
+        key_box: &KeyBox,
         exercise: &mut Exercise,
         ctx: &mut TxContext,
     ) {
