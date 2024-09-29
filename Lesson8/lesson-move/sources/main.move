@@ -1,12 +1,13 @@
 module lesson::main {
     use std::string::String;
-    use std::type_name;
+    use std::type_name::{Self, TypeName};
 
     use sui::dynamic_field;
     use sui::dynamic_object_field;
     use sui::random::Random;
     use sui::table;
     use sui::package::Publisher;
+    use sui::types;
 
     use lesson::linked_object_table::{Self, LinkedObjectTable};
 
@@ -226,19 +227,20 @@ module lesson::main {
         };
     }
 
-    public struct AccessCap<OTW> has store {
-        otw: OTW,
+    public struct AccessCap has store {
+        otw: TypeName,
     }
 
-    public fun gain_access_capability<OTW: drop>(otw: OTW): AccessCap<OTW> {
+    public fun gain_access_capability<OTW: drop>(otw: &OTW): AccessCap {
         // authority check?
-        AccessCap<OTW> {
-            otw,
+        assert!(types::is_one_time_witness(otw), 0);
+        AccessCap {
+            otw: type_name::get<OTW>(),
         }
     }
 
-    public fun public_mint_lorem_ipsum<OTW>(
-        _: &AccessCap<OTW>,
+    public fun public_mint_lorem_ipsum(
+        access_cap: &AccessCap,
         registry: &mut Registry,
         ctx: &mut TxContext,
     ): LoremIpsum {
@@ -250,7 +252,7 @@ module lesson::main {
         table::add(mint_lorem_ipsum_proof_table, ctx.sender(), MintLoremIpsumProof { user: ctx.sender() });
 
         let mut magic = b"https://reurl.cc/VM7oxb?otw=".to_string();
-        magic.append(type_name::get<OTW>().into_string().to_string());
+        magic.append(access_cap.otw.into_string().to_string());
 
         LoremIpsum {
             id: object::new(ctx),
@@ -258,8 +260,8 @@ module lesson::main {
         }
     }
 
-    public fun public_stake_lorem_ipsum<OTW>(
-        _: &AccessCap<OTW>,
+    public fun public_stake_lorem_ipsum(
+        _: &AccessCap,
         exercise: &mut Exercise,
         lorem_ipsum: LoremIpsum,
         ctx: &TxContext,

@@ -3,7 +3,7 @@ name = "lesson"
 version = "1.0.0"
 edition = "2024.beta"
 authors = ["Jeric@TypusFinance"]
-published-at = "0x0d0b8de6834045f24acae61d09c2e655aede6a6d926c361bdabcc7b34d057870"
+published-at = "0x95a59510bbc3bca1575939c510483013fc614fdaefb5793b361bd3bd4479270d"
 
 [dependencies.Sui]
 git = "https://github.com/MystenLabs/sui.git"
@@ -11,4 +11,4 @@ subdir = "crates/sui-framework/packages/sui-framework"
 rev = "mainnet"
 
 [addresses]
-lesson = "0x0d0b8de6834045f24acae61d09c2e655aede6a6d926c361bdabcc7b34d057870"
+lesson = "0x95a59510bbc3bca1575939c510483013fc614fdaefb5793b361bd3bd4479270d"

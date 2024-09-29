@@ -10,7 +10,7 @@ subdir = "crates/sui-framework/packages/sui-framework"
 rev = "mainnet"
 
 [dependencies.lesson]
-local = "../lesson"
+local = "../lesson-move"
 
 [addresses]
 exercise = "0x0"

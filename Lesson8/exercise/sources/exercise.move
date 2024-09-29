@@ -1,8 +1,7 @@
 module exercise::exercise {
     use sui::dynamic_field;
-    use sui::table;
 
-    use lesson::main::{Self, Exercise, Registry};
+    use lesson::main::{Self, Exercise, Registry, LoremIpsum};
 
     const KAccessCap: vector<u8> = b"access_cap";
 
@@ -18,7 +17,7 @@ module exercise::exercise {
 
     entry fun mint_lorem_ipsum(
         key_box: &KeyBox,
-        registry: &Registry,
+        registry: &mut Registry,
         ctx: &mut TxContext,
     ) {
         // TODO: borrow AccessCap from KeyBox
@@ -33,10 +32,11 @@ module exercise::exercise {
     entry fun stake_lorem_ipsum(
         key_box: &KeyBox,
         exercise: &mut Exercise,
-        ctx: &mut TxContext,
+        lorem_ipsum: LoremIpsum,
+        ctx: &TxContext,
     ) {
         // TODO: borrow AccessCap from KeyBox
-        let lorem_ipsum = main::public_stake_lorem_ipsum(
+        main::public_stake_lorem_ipsum(
             access_cap,
             exercise,
             lorem_ipsum,

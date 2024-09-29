@@ -1,10 +1,10 @@
-package=0x0d0b8de6834045f24acae61d09c2e655aede6a6d926c361bdabcc7b34d057870
-publisher=0x0a7660c17671e8aacffc2b4863a5b3d11e10b305681bd17cabf5967bc04bfb68
-registry=0xeb66e96624adbb278053709fe8821c4277947c157e4f487b4d69b1c8f8c859bf
+package=0x95a59510bbc3bca1575939c510483013fc614fdaefb5793b361bd3bd4479270d
+registry=0x99f6f8fb47010aebb2e09885cdf80d483e36e7a14809e3de21b373588e362d42
+exercise=0x511edb2a3177c9bb9b2637661f319cf490f9f46642675ef87299528516762ffa
+publisher=0xec9eabc0b6574c680b5e0fb7e9f7d5d937058d2344db6db9bd637bebfb7106cb
 lorem_ipsum=
 test_dynamic_field_gas_fee=
 test_vector_gas_fee=
-exercise=0x7f28be992790f3d8666ac04d10095549e89f127e3cad95b88035b825586f67e7
 
 # sui client call --package $package --module main --function create_dynamic_field --args $registry --gas-budget 100000000
 # sui client call --package $package --module main --function create_dynamic_object_field --args $registry --gas-budget 100000000
@@ -22,4 +22,4 @@ exercise=0x7f28be992790f3d8666ac04d10095549e89f127e3cad95b88035b825586f67e7
 # sui client call --package $package --module main --function test_vector_gas_fee_2 --args $test_vector_gas_fee 1000 --gas-budget 100000000
 
 # sui client call --package $package --module main --function create_chimera_linked_object_table --args $registry --gas-budget 100000000
-sui client call --package $package --module main --function create_chimera --args $registry 0x8 --gas-budget 100000000
+# sui client call --package $package --module main --function create_chimera --args $registry 0x8 --gas-budget 100000000
